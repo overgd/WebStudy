@@ -1,0 +1,23 @@
+@CHARSET "EUC-KR";
+h1, h2 {
+	color: #8c8c8c;
+}
+h1 {
+	font-family: "¸¼Àº °íµñ";
+	border-bottom: 8px solid gray;
+}
+p {
+	font-family: "¸¼Àº °íµñ";
+}
+p.greentea {
+	color: #64CD3C;
+}
+p.raspberrytea {
+	color: #32BEBE;
+}
+p.blueberrytea {
+	color: #C964E2;
+}
+p.cranberrytea {
+	color: #FF0000;
+}
