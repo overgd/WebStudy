@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script>
+	function doIt() {
+		var word1 = ["나는 ", "너는 ", "그는 ", "그녀는 "];
+		var word2 = ["어제 ", "오늘 ", "내일 ", "다음달에 "];
+		var word3 = ["공부를 했다.", "게임을 했다.", "춤을 추었다", "노래를 했다."];
+		
+		var r1 = Math.floor(Math.random() * word1.length);
+		var r2 = Math.floor(Math.random() * word2.length);
+		var r3 = Math.floor(Math.random() * word3.length);
+		
+		var sentence = word1[r1] + word2[r2] + word3[r3];
+		var method = document.getElementById("phrase");
+		method.innerHTML = sentence;
+	}
+	window.onload = doIt;
+</script>
+</head>
+<body>
+<p id="phrase"></p>
+</body>
+</html>
