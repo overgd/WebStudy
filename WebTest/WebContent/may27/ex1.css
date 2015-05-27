@@ -1,0 +1,25 @@
+@CHARSET "EUC-KR";
+body {
+	font-family: "¸¼Àº °íµñ";
+	font-size: 20px;
+	border-bottom: thin dashed #888888;
+}
+.withstar {
+	border-color: black;
+	border-width: 1px;
+	border-style: solid;
+	background-color: #a7cece;
+	padding: 25px;
+	margin: 30px;
+	background-image: url(images/background.gif);
+	line-height: 1.9em;
+	font-style: italic;
+	color : #444444;
+	background-repeat: no-repeat;
+	background-position: top left;
+	padding-left: 80px;
+	margin-right: 250px;
+	border-style: dashed;
+	border-width: 5px;
+	border-color: white;
+}
