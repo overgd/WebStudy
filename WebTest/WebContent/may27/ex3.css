@@ -1,0 +1,26 @@
+@CHARSET "EUC-KR";
+body {
+	background-color: red;
+	text-align: center;
+	color: #f2ec00;
+}
+.buger{
+	border: double 20px #f2ec00;
+	width : 600px;
+}
+#menu {
+
+}
+#line {
+
+}
+.img {
+	
+	display: inline-block;
+	width: 200px;
+	padding: 10px;
+	margin: 5px;
+	font: normal/3em "¸¼Àº °íµñ" bolder;
+	color: #f2ec00;
+	border: double 20px #f2ec00;
+}
