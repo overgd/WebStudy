@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="ex4.css">
+<meta charset="EUC-KR">
+<title>ex4</title>
+</head>
+<body>
+<form action="ex4.jsp" method="get">
+<p>
+<table width="100%" border="1">
+<tr>
+	<td>이름 :</td>
+	<td><input type="text" name="name" size="20"/></td>
+</tr>
+<tr>
+	<td>비밀번호 : </td>
+	<td><input type="password" name="pwd" size="10"/></td>
+</tr>
+<tr>
+	<td>좋아하는 동물 : </td>
+	<td>
+		<input type="checkbox" name="per" value="pet"/>강아지<br/>
+		<input type="checkbox" name="per" value="pet"/>고양이<br/>
+		<input type="checkbox" name="per" value="pet"/>새
+	</td>
+</tr>
+<tr>
+	<td>매운 음식 선호도 : </td>
+	<td>
+		<input type="radio" name="hot" value="yes"/>좋아한다.<br/>
+		<input type="radio" name="hot" value="no"/>싫아한다.
+	</td>
+</tr>
+<tr>
+	<td>간단한 소개글 작성 : </td>
+	<td>
+	<textarea name="intro" rows="10" cols="48"></textarea>
+	</td>
+</tr>
+<tr>
+	<td>좋아하는 취미를 고르세요 : </td>
+	<td>
+	<select name="hobby">
+	<option value="fishing"> 낚시</option>
+	<option value="game"> 게임</option>
+	<option value="movies"> 영화</option>
+	<option value="sports"> 운동</option>
+	</select>
+	</td>
+</tr>
+<tr>
+	<td><input type="submit" value="전송하기"/></td>
+	<td><input type="reset" value="취소"/></td>
+</tr>
+</table>
+</p>
+</form>
+</body>
+</html>
