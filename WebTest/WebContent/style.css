@@ -4,12 +4,18 @@ body {
 	text-align: center;
 	color: #f2ec00;
 }
+img {
+	border: 0px;
+}
+h1 {
+	color: white;
+}
+h2 {
+	color: white;
+}
 .buger{
 	border: double 20px #f2ec00;
 	width : 600px;
-}
-#menu {
-
 }
 #line {
 
@@ -20,7 +26,18 @@ body {
 	width: 200px;
 	padding: 10px;
 	margin: 5px;
-	font: normal/3em "¸¼Àº °íµñ" bolder;
+	font: normal/3em "¸¼Àº °íµñ" bold;
 	color: #f2ec00;
 	border: double 20px #f2ec00;
+}
+#form {
+	border: maroon medium;
+}
+table {
+	width: 300px;
+	margin: auto;
+	table-layout: inherit;
+}
+.col1 {
+	width: 120px;
 }

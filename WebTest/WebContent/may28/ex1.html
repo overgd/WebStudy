@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>ex1</title>
+</head>
+<body>
+<a href="javascript:doShow('자바스크립트')">여기를 누르시오!</a>
+<form action="" method="get" name="menu">
+<input type="checkbox" name="food" value="ramen"/>라면<br/>
+<input type="checkbox" name="food" value="rice"/>밥<br/>
+<input type="button" name="btn" value="선택완료" onclick="javascript:selectFood()"/>
+</form>
+
+<form action="ex1.jsp" name="ORDER_INFO">
+이름(필수항목) : <input type="text" name="NAME" size="20"/><br/>
+주소(필수항목) : <input type="text" name="ADDR" size="30"/><br/>
+결제수단 : <input type="radio" name="PAYMENT" value="1">신용카드
+<input type="radio" name="PAYMENT" value="2">스마트폰
+<input type="radio" name="PAYMENT" value="3">무통장 입금
+<input type="button" id="btn" value="결제하기" onclick="javascript:validate()"/>
+</form> 
+<br/>
+<form action="ex1.jsp" name="submitform" onsubmit="return checkValue(this)">
+이름(필수항목) : <input type="text" name="NAME" size="20"/><br/>
+주소(필수항목) : <input type="text" name="ADDR" size="30"/><br/>
+결제수단 : <input type="radio" name="PAYMENT" value="1">신용카드
+<input type="radio" name="PAYMENT" value="2">스마트폰
+<input type="radio" name="PAYMENT" value="3">무통장 입금
+<input type="submit" value="전송하기"/>
+</form> 
+<script type="text/javascript">
+function checkValue(form) {
+	if(form.NAME.value == "") {
+		alert("이름을 입력하세요");
+		return false;
+	}
+	if(form.ADDR.value == "") {
+		alert("주소를 입력하세요");
+		return false;
+	}
+	for(var i = 0; i < form.PAYMENT.length; i++) {
+		if(form.PAYMENT[i].checked) {
+			return true;
+		}
+	}
+	return false;
+}
+function doShow(str){
+	alert(str);
+}
+function selectFood() {
+	
+	var food = document.menu.food;
+	
+	if(food[0].checked) {
+		alert("라면이다");
+	}
+	if(food[1].checked) {
+		alert("밥이다");
+	}
+	
+}
+function validate() {
+	
+	var name = ORDER_INFO.NAME.value;
+	
+	if(ORDER_INFO.NAME.value == ""){
+		alert("이름을 입력하세요");
+		return false;
+	}
+	if(ORDER_INFO.ADDR.value == ""){
+		alert("주소를 입력하세요");
+		return false;
+	}
+	
+	var pay = ORDER_INFO.PAYMENT;
+	
+	for(var i = 0; i < pay.length; i++) {
+		if(pay[i].checked) {
+			alert(pay[i].value);
+		}
+		else {
+			return false;
+		}
+	}
+	ORDER_INFO.submit();
+	
+}
+</script>
+</body>
+</html>
