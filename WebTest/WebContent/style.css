@@ -21,7 +21,6 @@ h2 {
 
 }
 .img {
-	
 	display: inline-block;
 	width: 200px;
 	padding: 10px;
@@ -34,10 +33,17 @@ h2 {
 	border: maroon medium;
 }
 table {
-	width: 300px;
-	margin: auto;
+	text-align: left;
 	table-layout: inherit;
+	width: auto;
+	margin: auto;
+}
+.join {
+	width: 280px;
 }
 .col1 {
 	width: 120px;
+}
+.menu {
+
 }

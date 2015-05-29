@@ -6,13 +6,16 @@
 <title>가입</title>
 </head>
 <body>
-<img src="images/logo.png">
+<a href="index.html"><img src="images/logo.png"></a>
 <h1>환영합니다!</h1>
+
+<form action="joinInput.jsp" name="JOIN_INFO" method="post" onsubmit="return check(this)">
+
 <div id = "form">
-<table border="1">
+<table class="join" border="1">
 <tr>
 	<td class="col1">아이디</td>
-	<td><input type="text" name="ID" size="20"></td>
+	<td><input type="text" name="ID" size="15"></td>
 </tr>
 <tr>
 	<td class="col1">비밀번호</td>
@@ -24,25 +27,63 @@
 </tr>
 </table>
 <br/>
-<table border="1">
+<table class="join" border="1">
 <tr>
 	<td class="col1">이름</td>
-	<td><input type="text" name="NAME" size="20"></td>
+	<td><input type="text" name="NAME" size="20" value=""></td>
+</tr>
+<tr>
+	<td class="col1">주소</td>
+	<td><input type="text" name="ADDR" size="20" value=""></td>
+</tr>
+<tr>
+	<td class="col1">상세주소</td>
+	<td><input type="text" name="ADDRDE" size="20" value=""></td>
 </tr>
 <tr>
 	<td class="col1">성별</td>
 	<td>
+	<input type="hidden" name="GENDER" value="">
 	<input type="radio" name="GENDER" value="남">남
 	<input type="radio" name="GENDER" value="여">여
 	</td>
 </tr>
 <tr>
 	<td class="col1">휴대전화</td>
-	<td><input type="text" name="PHONE" size="20"></td>
+	<td><input type="text" name="PHONE" size="20" value=""></td>
 </tr>
 </table>
 </div>
 <br/>
-<input type="button" id="CONFIRM" value="가입하기"/>
+<input type="submit" name="CONFIRM" value="가입하기"/>
+
+</form>
+<script type="text/javascript">
+function check(form) {
+	
+	if(form.ID.value == ""){
+		alert("ID를 입력해주세요.");
+		return false;
+	}
+	
+	if(form.PASS.value == ""){
+		alert("암호를 입력해주세요.");
+		return false;
+	}
+	
+	if(form.RE_PASS.value == ""){
+		alert("암호를 입력해주세요.");
+		return false;
+	}
+	
+	if(form.PASS.value != form.RE_PASS.value) {
+		alert("비밀번호가 같지 않습니다.");
+		return false;
+	}
+	
+	return true;
+	
+}
+</script>
 </body>
 </html>
