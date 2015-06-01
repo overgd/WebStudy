@@ -9,14 +9,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <error-page>
-  	<error-code>404</error-code>
-  	<location>/error404.jsp</location>
-  </error-page>
-  <error-page>
-  	<error-code>500</error-code>
-  	<location>/error404.jsp</location>
-  </error-page>
   <context-param>
   	<param-name>Sponsor1</param-name>
   	<param-value>다모아 마트</param-value>
@@ -25,4 +17,13 @@
   	<param-name>Manager Address</param-name>
   	<param-value>서울시 강남</param-value>
   </context-param>
+  <jsp-config>
+  	<taglib>
+  		<taglib-uri>http://my_functions.com</taglib-uri>
+  		<taglib-location>/WEB-INF/my_functions.tld</taglib-location>
+  	</taglib>
+  	<taglib>
+  		<taglib-uri>http://ex02.com</taglib-uri>
+  		<taglib-location>/WEB-INF/ex02.tld</taglib-location>
+  	</taglib></jsp-config>
 </web-app>

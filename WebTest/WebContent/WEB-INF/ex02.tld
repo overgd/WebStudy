@@ -1,0 +1,7 @@
+<taglib version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
+	<tlib-version>1.0</tlib-version>
+	<short-name>functions</short-name>
+	<function>
+		<name>goldnum</name>
+		<function-class>june01.ex02</function-class>
+		<function-signature>int[] goldnum(int)</function-signature></function></taglib>

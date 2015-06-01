@@ -1,0 +1,23 @@
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+	<tlib-version>1.0</tlib-version>
+	<short-name>functions</short-name>
+	<function>
+		<name>dice</name>
+		<function-class>june01.MyUtility</function-class>
+		<function-signature>int diceRandom()</function-signature></function>
+	<function>
+		<name>dicegame</name>
+		<function-class>june01.MyUtility</function-class>
+		<function-signature>java.lang.String diceGame()</function-signature></function>
+	<function>
+		<name>rangeRandom</name>
+		<function-class>june01.MyUtility</function-class>
+		<function-signature>int rangeRandom(int, int)</function-signature></function>
+	<function>
+		<name>getLotto</name>
+		<function-class>june01.MyUtility</function-class>
+		<function-signature>java.util.TreeSet getLotto()</function-signature></function>
+	<function>
+		<name>square</name>
+		<function-class>java.lang.Math</function-class>
+		<function-signature>double sqrt(double)</function-signature></function></taglib>
