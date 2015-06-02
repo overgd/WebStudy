@@ -1,0 +1,7 @@
+<taglib version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
+	<tlib-version>1.0</tlib-version>
+	<short-name>functions</short-name>
+	<function>
+		<name>game</name>
+		<function-class>june02.ex02</function-class>
+		<function-signature>int game_num()</function-signature></function></taglib>

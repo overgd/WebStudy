@@ -25,5 +25,9 @@
   	<taglib>
   		<taglib-uri>http://ex02.com</taglib-uri>
   		<taglib-location>/WEB-INF/ex02.tld</taglib-location>
+  	</taglib>
+  	<taglib>
+  		<taglib-uri>http://june02.com</taglib-uri>
+  		<taglib-location>/WEB-INF/june02/ex.tld</taglib-location>
   	</taglib></jsp-config>
 </web-app>
