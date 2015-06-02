@@ -17,12 +17,13 @@
 </form>
 <c:if test="${param.HUMAN != null }">
 인간 : 
-<c:set var="HUM" value="${param.HUMAN}"/>
+
 <c:choose>
-<c:when test="${HUM == 0}">가위 </c:when>
-<c:when test="${HUM == 1}">바위 </c:when>
-<c:when test="${HUM == 2}">보 </c:when>
+<c:when test="${param.HUMAN == 0}">가위 </c:when>
+<c:when test="${param.HUMAN == 1}">바위 </c:when>
+<c:when test="${param.HUMAN == 2}">보 </c:when>
 </c:choose>
+${param.HUMAN }
 <br/>
 컴 : 
 <c:set var="COM" value="${ex02:game()}"/>
@@ -31,11 +32,12 @@
 <c:when test="${COM == 1}">바위 </c:when>
 <c:when test="${COM == 2}">보 </c:when>
 </c:choose>
+${COM }
 <br/>
 
-<c:if test="${HUM == COM}">비김</c:if>
-<c:if test="${HUM-COM == -1 || HUM-COM == 2}">컴 승</c:if>
-<c:if test="${COM-HUM == -1 || COM-HUM == 2}">인간 승</c:if>
+<c:if test="${param.HUMAN == COM}">비김</c:if>
+<c:if test="${param.HUMAN-COM == -1 || param.HUMAN-COM == 2}">컴 승</c:if>
+<c:if test="${COM-param.HUMAN == -1 || COM-param.HUMAN == 2}">인간 승</c:if>
 
 </c:if>
 </body>
