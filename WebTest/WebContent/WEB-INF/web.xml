@@ -29,5 +29,17 @@
   	<taglib>
   		<taglib-uri>http://june02.com</taglib-uri>
   		<taglib-location>/WEB-INF/june02/ex.tld</taglib-location>
+  	</taglib>
+  	<taglib>
+  		<taglib-uri>http://taglib5.tld</taglib-uri>
+  		<taglib-location>/WEB-INF/taglib5.tld</taglib-location>
+  	</taglib>
+  	<taglib>
+  		<taglib-uri>http://toolbar.com</taglib-uri>
+  		<taglib-location>/WEB-INF/taglib165.tld</taglib-location>
+  	</taglib>
+  	<taglib>
+  		<taglib-uri>http://effect.com</taglib-uri>
+  		<taglib-location>/WEB-INF/taglib294.tld</taglib-location>
   	</taglib></jsp-config>
 </web-app>
