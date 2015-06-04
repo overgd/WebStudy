@@ -60,6 +60,33 @@
 			<name>num2</name>
 			<type>java.lang.Integer</type></attribute>
 		<variable>
-			<name-given>result</name-given>
+			<name-from-attribute>var</name-from-attribute>
 			<variable-class>java.lang.Integer</variable-class>
-			<scope>AT_END</scope></variable></tag></taglib>
+			<scope>AT_END</scope></variable>
+		<attribute>
+			<name>var</name>
+			<type>java.lang.Integer</type>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue></attribute></tag>
+	<tag>
+		<name>list</name>
+		<tag-class>june04.MyList</tag-class>
+		<body-content>scriptless</body-content></tag>
+	<tag>
+		<name>row</name>
+		<tag-class>june04.MyRow</tag-class>
+		<body-content>scriptless</body-content></tag>
+	<tag>
+		<name>newlist</name>
+		<tag-class>june04.MyNewList</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<name>var1</name>
+			<type>java.lang.String</type></attribute>
+		<attribute>
+			<name>var2</name>
+			<type>java.lang.String</type></attribute></tag>
+	<tag>
+		<name>newrow</name>
+		<tag-class>june04.MyNewRow</tag-class>
+		<body-content>scriptless</body-content></tag></taglib>

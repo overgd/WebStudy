@@ -19,7 +19,26 @@ hello 친구들아 hello hello<br/>
 bye bye 친구들아<br/>
 hello 친구들아 hello hello<br/>
 </mytag:replace>
-<mytag:mymin num1="12" num2="23"/>
-${result }
+<mytag:mymin var="result" num1="12" num2="23"/>
+${result }<br/>
+
+<mytag:list>
+<mytag:row>
+자동차
+</mytag:row>
+<mytag:row>
+비행기
+</mytag:row>
+</mytag:list>
+
+<mytag:newlist var1="*" var2="%">
+<mytag:newrow>
+후루루루루루루
+</mytag:newrow>
+<mytag:newrow>
+호로로로로롤
+</mytag:newrow>
+</mytag:newlist>
+
 </body>
 </html>

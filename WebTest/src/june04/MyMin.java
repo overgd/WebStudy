@@ -10,7 +10,13 @@ public class MyMin extends SimpleTagSupport {
 
 	private int num1;
 	private int num2;
-		
+	
+	private String var;
+	
+	public void setVar(String var) {
+		this.var = var;
+	}
+
 	public void setNum1(int num1) {
 		this.num1 = num1;
 	}
@@ -27,11 +33,11 @@ public class MyMin extends SimpleTagSupport {
 		JspContext context = getJspContext();
 		if(num1 < num2) {
 			
-			context.setAttribute("result", num1);
+			context.setAttribute(var, num1);
 			
 		}else {
 			
-			context.setAttribute("result", num2);
+			context.setAttribute(var, num2);
 			
 		}
 	
