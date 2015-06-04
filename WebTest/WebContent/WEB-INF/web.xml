@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>WebTest</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -10,40 +10,81 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <context-param>
-  	<param-name>Sponsor1</param-name>
-  	<param-value>다모아 마트</param-value>
+    <param-name>Sponsor1</param-name>
+    <param-value>다모아 마트</param-value>
   </context-param>
   <context-param>
-  	<param-name>Manager Address</param-name>
-  	<param-value>서울시 강남</param-value>
+    <param-name>Manager Address</param-name>
+    <param-value>서울시 강남</param-value>
   </context-param>
   <jsp-config>
-  	<taglib>
-  		<taglib-uri>http://my_functions.com</taglib-uri>
-  		<taglib-location>/WEB-INF/my_functions.tld</taglib-location>
-  	</taglib>
-  	<taglib>
-  		<taglib-uri>http://ex02.com</taglib-uri>
-  		<taglib-location>/WEB-INF/ex02.tld</taglib-location>
-  	</taglib>
-  	<taglib>
-  		<taglib-uri>http://june02.com</taglib-uri>
-  		<taglib-location>/WEB-INF/june02/ex.tld</taglib-location>
-  	</taglib>
-  	<taglib>
-  		<taglib-uri>http://taglib5.tld</taglib-uri>
-  		<taglib-location>/WEB-INF/taglib5.tld</taglib-location>
-  	</taglib>
-  	<taglib>
-  		<taglib-uri>http://toolbar.com</taglib-uri>
-  		<taglib-location>/WEB-INF/taglib165.tld</taglib-location>
-  	</taglib>
-  	<taglib>
-  		<taglib-uri>http://effect.com</taglib-uri>
-  		<taglib-location>/WEB-INF/taglib294.tld</taglib-location>
-  	</taglib>
-  	<taglib>
-  		<taglib-uri>http://mytag.com</taglib-uri>
-  		<taglib-location>/WEB-INF/mytag.tld</taglib-location>
-  	</taglib></jsp-config>
+    <taglib>
+      <taglib-uri>http://my_functions.com</taglib-uri>
+      <taglib-location>/WEB-INF/my_functions.tld</taglib-location>
+    </taglib>
+    <taglib>
+      <taglib-uri>http://ex02.com</taglib-uri>
+      <taglib-location>/WEB-INF/ex02.tld</taglib-location>
+    </taglib>
+    <taglib>
+      <taglib-uri>http://june02.com</taglib-uri>
+      <taglib-location>/WEB-INF/june02/ex.tld</taglib-location>
+    </taglib>
+    <taglib>
+      <taglib-uri>http://taglib5.tld</taglib-uri>
+      <taglib-location>/WEB-INF/taglib5.tld</taglib-location>
+    </taglib>
+    <taglib>
+      <taglib-uri>http://toolbar.com</taglib-uri>
+      <taglib-location>/WEB-INF/taglib165.tld</taglib-location>
+    </taglib>
+    <taglib>
+      <taglib-uri>http://effect.com</taglib-uri>
+      <taglib-location>/WEB-INF/taglib294.tld</taglib-location>
+    </taglib>
+    <taglib>
+      <taglib-uri>http://mytag.com</taglib-uri>
+      <taglib-location>/WEB-INF/mytag.tld</taglib-location>
+    </taglib>
+  </jsp-config>
+  <servlet>
+    <description></description>
+    <display-name>MyServlet</display-name>
+    <servlet-name>My</servlet-name>
+    <servlet-class>june04.MyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>My</servlet-name>
+    <url-pattern>/june04/myServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MySecServlet</display-name>
+    <servlet-name>MySecServlet</servlet-name>
+    <servlet-class>june04.MySecServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MySecServlet</servlet-name>
+    <url-pattern>/june04/mySecServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BeerSelection</display-name>
+    <servlet-name>BeerSelection</servlet-name>
+    <servlet-class>june04.BeerSelection</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BeerSelection</servlet-name>
+    <url-pattern>/june04/beerSelect.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MatServ</display-name>
+    <servlet-name>MatServ</servlet-name>
+    <servlet-class>june04.MatServ</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MatServ</servlet-name>
+    <url-pattern>/june04/searchMat.it</url-pattern>
+  </servlet-mapping>
 </web-app>
