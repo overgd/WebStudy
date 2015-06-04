@@ -41,5 +41,9 @@
   	<taglib>
   		<taglib-uri>http://effect.com</taglib-uri>
   		<taglib-location>/WEB-INF/taglib294.tld</taglib-location>
+  	</taglib>
+  	<taglib>
+  		<taglib-uri>http://mytag.com</taglib-uri>
+  		<taglib-location>/WEB-INF/mytag.tld</taglib-location>
   	</taglib></jsp-config>
 </web-app>
