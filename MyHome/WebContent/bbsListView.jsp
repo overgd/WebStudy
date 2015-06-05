@@ -18,7 +18,7 @@
 	<c:forEach var="cnt" begin="0" end="4">
 	<tr>
 		<td>${BBS_LIST.seqNo[cnt] }</td>
-		<td><a href="">${BBS_LIST.title[cnt] }</a></td>
+		<td><a href="bbs_Item">${BBS_LIST.title[cnt] }</a></td>
 		<td>${BBS_LIST.writer[cnt]}</td>
 	</tr>
 	</c:forEach>
