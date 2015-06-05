@@ -49,4 +49,14 @@
     <servlet-name>BBSReadServlet</servlet-name>
     <url-pattern>/bbs_list</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BBSItemServlet</display-name>
+    <servlet-name>BBSItemServlet</servlet-name>
+    <servlet-class>myhome.BBSItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BBSItemServlet</servlet-name>
+    <url-pattern>/BBSItemServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
