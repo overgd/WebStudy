@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h3>게시글</h3>
+글 번호 : ${ITEM.seqNo }<br/>
+글 제목 : ${ITEM.title }<br/>
+글 작성자 : ${ITEM.writer }<br/>
+글 내용<br/>
+${ITEM.content }
 </body>
 </html>
