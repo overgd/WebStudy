@@ -1,24 +1,23 @@
-package june04;
+package june05;
 
 import java.io.IOException;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class MatServ
+ * Servlet implementation class MyLoginServlet
  */
-public class MatServ extends HttpServlet {
+public class MyLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MatServ() {
+    public MyLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,16 +33,22 @@ public class MatServ extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("euc-kr");
+
+		String id = request.getParameter("ID");
+		String pwd = request.getParameter("PWD");
+		String result = "";
+		HttpSession session = request.getSession();
 		
-		String gu = request.getParameter("gu");
+		if(id.equals(pwd)) {
+			
+			session.setAttribute("ID", id);
+			result = "OK";
 		
-		MatList ml = new MatList();
-		List jips = ml.getJips(gu);
+		}else {
+			result = "NOK";
+		}
 		
-		request.setAttribute("RESULT", jips);
-		RequestDispatcher rd = request.getRequestDispatcher("Matshow.jsp");
-		rd.forward(request, response);
+		response.sendRedirect("loginResult.jsp?RESULT="+result);
 	}
 
 }
