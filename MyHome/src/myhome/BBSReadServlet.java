@@ -36,7 +36,6 @@ public class BBSReadServlet extends HttpServlet {
 		페이지 변환*/
 		
 		String pageNo = request.getParameter("PAGE_NO");
-		
 		String lastNo = request.getParameter("LAST_NO");
 		String firstNo = request.getParameter("FIRST_NO");
 		
@@ -54,7 +53,7 @@ public class BBSReadServlet extends HttpServlet {
 			list = readNextPage(Integer.parseInt(lastNo));
 		}else {
 			list = readDB();
-			System.out.println("list.listSize():["+list.getListSize()+"]");
+//			System.out.println("list.listSize():["+list.getListSize()+"]");
 		}
 		
 //		BBSList list = readDB();
@@ -114,7 +113,7 @@ public class BBSReadServlet extends HttpServlet {
 			
 			ResultSet rs = stmt.executeQuery("select * from bbs where seqno < "+seqNo+" order by seqno desc");
 			
-			for(int i = 0; i < 5;i++) {
+			for(int i = 0; i < 5 ;i++) {
 				
 				if(!rs.next()) break;
 				list.setSeqNo(i, rs.getInt("seqno"));

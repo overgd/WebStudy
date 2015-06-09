@@ -117,4 +117,14 @@
     <servlet-name>CartListServlet</servlet-name>
     <url-pattern>/cart_list</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModifyCartServlet</display-name>
+    <servlet-name>ModifyCartServlet</servlet-name>
+    <servlet-class>myhome.ModifyCartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModifyCartServlet</servlet-name>
+    <url-pattern>/modify_cart</url-pattern>
+  </servlet-mapping>
 </web-app>

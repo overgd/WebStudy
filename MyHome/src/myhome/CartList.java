@@ -9,6 +9,36 @@ public class CartList {
 	private ArrayList<Integer> priceList = new ArrayList<Integer>();//가격
 	private ArrayList<Integer> numberList = new ArrayList<Integer>();//수량
 
+	private int pageNum;
+	private boolean firstPage = false;
+	private boolean lastPage = false;
+	
+	
+	
+	public int getPageNum() {
+		return pageNum;
+	}
+
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
+	}
+
+	public boolean isFirstPage() {
+		return firstPage;
+	}
+
+	public void setFirstPage(boolean firstPage) {
+		this.firstPage = firstPage;
+	}
+
+	public boolean isLastPage() {
+		return lastPage;
+	}
+
+	public void setLastPage(boolean lastPage) {
+		this.lastPage = lastPage;
+	}
+
 	public void setCode(int index, Integer code) {
 		this.codeList.add(index, code);
 	}

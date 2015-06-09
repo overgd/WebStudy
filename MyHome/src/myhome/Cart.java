@@ -7,6 +7,26 @@ public class Cart {
 		private LinkedList<String> codeList = new LinkedList<String>(); 	//상품코드
 		private LinkedList<Integer> numberList = new LinkedList<Integer>(); 	//상품갯수
 		
+		public void deleteItem(String code) {
+			for(int cnt = 0; cnt < codeList.size(); cnt++) {
+				if(codeList.get(cnt).equals(code)) {
+					codeList.remove(cnt);
+					numberList.remove(cnt);
+					return;
+				}
+			}
+		}
+		
+		public void modifyItem(String code, int num) {
+			for(int cnt = 0; cnt < codeList.size(); cnt++) {
+				if(codeList.get(cnt).equals(code)) {
+					numberList.set(cnt, num);
+					return;
+				}
+			}
+			
+		}
+		
 		public void addItem(String code, int num) { 	//상품을 담는 메서드
 			
 			for(int i = 0; i < codeList.size(); i++) { 
