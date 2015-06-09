@@ -23,8 +23,9 @@
 	<a href="template.jsp?BODY=Intro.html">소개한다 나의 가족</a><br/>
 	<a href="template.jsp?BODY=bbsinput.html">쓴다 게시판 글</a><br/>
 	<a href="bbs_list">읽는다 게시판 글</a><br/>
-	<a href="">정보 상품의</a><br/>
-	<a href="">고른 상품 바구니</a><br/>
+	<a href="template.jsp?BODY=goodsinput.html">등록한다 상품을</a><br/>
+	<a href="goods_list">본다 상품을</a><br/>
+	<a href="cart_list">장바구니</a><br/>
 	</td>
 	<td height="650" width="650" valign="top">
 	<jsp:include page="${param.BODY }"/>

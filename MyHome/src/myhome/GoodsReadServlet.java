@@ -14,15 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class BBSReadServlet
+ * Servlet implementation class GoodsReadServlet
  */
-public class BBSReadServlet extends HttpServlet {
+public class GoodsReadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BBSReadServlet() {
+    public GoodsReadServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,9 +32,6 @@ public class BBSReadServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		/*bbs 테이블에서 글을 select
-		페이지 변환*/
-		
 		String pageNo = request.getParameter("PAGE_NO");
 		
 		String lastNo = request.getParameter("LAST_NO");
@@ -44,7 +41,7 @@ public class BBSReadServlet extends HttpServlet {
 //		System.out.println("lastNo:["+lastNo+"]");
 //		System.out.println("firstNo:["+firstNo+"]");
 		
-		BBSList list = null;
+		GoodsList list = null;
 		
 		if(pageNo != null) {
 			list = readPage(Integer.parseInt(pageNo));
@@ -60,12 +57,12 @@ public class BBSReadServlet extends HttpServlet {
 //		BBSList list = readDB();
 		
 		list.setPageNum(readPageNum());
-		request.setAttribute("BBS_LIST", list);
-		RequestDispatcher rd = request.getRequestDispatcher("template.jsp?BODY=bbsListView.jsp");
+		request.setAttribute("GOODS_LIST", list);
+		RequestDispatcher rd = request.getRequestDispatcher("template.jsp?BODY=goodsListView.jsp");
 		rd.forward(request, response);
 		
 	}
-	
+
 	private int readPageNum() throws ServletException {
 		
 		int pageNum = 0;
@@ -80,7 +77,7 @@ public class BBSReadServlet extends HttpServlet {
 			if(conn == null){ throw new ServletException("DB 접속실패!");}
 			stmt = conn.createStatement();
 			
-			ResultSet rs = stmt.executeQuery("select count(*) as num from bbs");
+			ResultSet rs = stmt.executeQuery("select count(*) as num from goods");
 			
 			if(!rs.next()) {
 				return 0;
@@ -95,9 +92,9 @@ public class BBSReadServlet extends HttpServlet {
 		return (pageNum + 4) / 5;
 	}
 	
-	private BBSList readNextPage(int seqNo) throws ServletException {
+	private GoodsList readNextPage(int code) throws ServletException {
 		
-		BBSList list = new BBSList();
+		GoodsList list = new GoodsList();
 		
 		Connection conn = null;
 		Statement stmt = null;
@@ -112,15 +109,14 @@ public class BBSReadServlet extends HttpServlet {
 			
 			stmt = conn.createStatement();
 			
-			ResultSet rs = stmt.executeQuery("select * from bbs where seqno < "+seqNo+" order by seqno desc");
+			ResultSet rs = stmt.executeQuery("select * from goods where code < "+code+" order by code desc");
 			
 			for(int i = 0; i < 5;i++) {
 				
 				if(!rs.next()) break;
-				list.setSeqNo(i, rs.getInt("seqno"));
-//				System.out.println("seqno:["+rs.getInt("seqno")+"]");
-				list.setTitle(i, rs.getString("title"));
-				list.setWriter(i, rs.getString("id"));
+				list.setCodeList(i, rs.getInt("code"));
+				list.setNameList(i, rs.getString("name"));
+				list.setPriceList(i, rs.getInt("price"));
 			
 			}
 			
@@ -136,9 +132,9 @@ public class BBSReadServlet extends HttpServlet {
 		return list;
 	}
 	
-	private BBSList readPrevPage(int seqNo)	throws ServletException {
+	private GoodsList readPrevPage(int code) throws ServletException {
 		
-		BBSList list = new BBSList();
+		GoodsList list = new GoodsList();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -152,7 +148,7 @@ public class BBSReadServlet extends HttpServlet {
 				throw new ServletException("DB 접속 실패!");
 			}
 			
-			pstmt = conn.prepareStatement("select * from bbs where seqno > "+seqNo+" order by seqno desc", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			pstmt = conn.prepareStatement("select * from goods where code > "+code+" order by code desc", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			ResultSet rs = pstmt.executeQuery();
 			
 			if(!rs.last()) {
@@ -164,9 +160,9 @@ public class BBSReadServlet extends HttpServlet {
 			rs.absolute(rows - 4);//위로 4칸 이동
 		
 			for(int cnt = 0; cnt < 5; cnt++ ) {
-				list.setSeqNo(cnt, rs.getInt("seqno"));
-				list.setTitle(cnt, rs.getString("title"));
-				list.setWriter(cnt, rs.getString("id"));
+				list.setCodeList(cnt, rs.getInt("code"));
+				list.setNameList(cnt, rs.getString("name"));
+				list.setPriceList(cnt, rs.getInt("price"));
 				if(!rs.next()) {
 					break;
 				}
@@ -188,9 +184,9 @@ public class BBSReadServlet extends HttpServlet {
 		return list;
 	}
 	
-	private BBSList readPage(int pageNo) throws ServletException {
+	private GoodsList readPage(int pageNo) throws ServletException {
 		
-		BBSList list = new BBSList();
+		GoodsList list = new GoodsList();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -204,7 +200,7 @@ public class BBSReadServlet extends HttpServlet {
 				throw new ServletException("DB 접속 실패!");
 			}
 			
-			pstmt = conn.prepareStatement("select * from bbs order by seqno desc", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			pstmt = conn.prepareStatement("select * from goods order by code desc", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			ResultSet rs = pstmt.executeQuery();
 			
 			if(pageNo > 1) {
@@ -214,9 +210,9 @@ public class BBSReadServlet extends HttpServlet {
 			for(int cnt = 0; cnt < 5; cnt++) {
 				
 				if(!rs.next()) break;
-				list.setSeqNo(cnt, rs.getInt("seqno"));
-				list.setTitle(cnt, rs.getString("title"));
-				list.setWriter(cnt, rs.getString("id"));
+				list.setCodeList(cnt, rs.getInt("code"));
+				list.setNameList(cnt, rs.getString("name"));
+				list.setPriceList(cnt, rs.getInt("price"));
 				
 			}
 			
@@ -246,9 +242,9 @@ public class BBSReadServlet extends HttpServlet {
 		return list;
 	}
 
-	private BBSList readDB() throws ServletException {
+	private GoodsList readDB() throws ServletException {
 		
-		BBSList list = new BBSList();
+		GoodsList list = new GoodsList();
 		
 		Connection conn = null;
 		Statement stmt = null;
@@ -262,13 +258,13 @@ public class BBSReadServlet extends HttpServlet {
 			
 			stmt = conn.createStatement();
 			
-			ResultSet rs = stmt.executeQuery("select * from bbs order by seqno desc"); //역순 정렬
+			ResultSet rs = stmt.executeQuery("select * from goods order by code desc"); //역순 정렬
 			
 			for(int i = 0; i < 5; i++) {
 				if(!rs.next()) break;
-				list.setSeqNo(i, rs.getInt("seqno"));
-				list.setTitle(i, rs.getString("title"));
-				list.setWriter(i, rs.getString("id"));
+				list.setCodeList(i, rs.getInt("code"));
+				list.setNameList(i, rs.getString("name"));
+				list.setPriceList(i, rs.getInt("price"));
 			}
 			
 			list.setFirstPage(true);

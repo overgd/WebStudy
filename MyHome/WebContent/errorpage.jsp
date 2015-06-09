@@ -7,11 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>게시글</h3>
-글 번호 : ${ITEM.seqNo }<br/>
-글 작성자 : ${ITEM.writer }<br/>
-글 제목 : ${ITEM.title }<br/>
-글 내용<br/><br/>
-${ITEM.content }
+요청을 처리하는 도중 오류 발생!<br/>
+오류 메세지 : ${pageContext.exception.message }<br/>
 </body>
 </html>
