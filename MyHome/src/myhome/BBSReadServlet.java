@@ -91,6 +91,7 @@ public class BBSReadServlet extends HttpServlet {
 		}finally {
 			try{stmt.close(); conn.close();}catch(Exception e){}
 		}
+		
 		return (pageNum + 4) / 5;
 	}
 	

@@ -46,10 +46,12 @@ public class CartListServlet extends HttpServlet {
 		System.out.println("lastNo:["+lastNo+"]");
 		System.out.println("firstNo:["+firstNo+"]");
 		
+		CartList cartList = null;
+		
 		if(cart != null) { //장바구니가 있으면
 			//장바구니에 있는 상품코드로 조회
 			//조회 결과를 빈에 담는다.		
-			CartList cartList = readDB(cart);	 
+			cartList = readDB(cart);	 
 
 			request.setAttribute("CART_LIST", cartList); 
 
