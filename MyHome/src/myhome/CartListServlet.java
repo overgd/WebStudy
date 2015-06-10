@@ -42,20 +42,23 @@ public class CartListServlet extends HttpServlet {
 		String lastNo = request.getParameter("LAST_NO");
 		String firstNo = request.getParameter("FIRST_NO");
 		
-		System.out.println("pageNo:["+pageNo+"]");
-		System.out.println("lastNo:["+lastNo+"]");
-		System.out.println("firstNo:["+firstNo+"]");
-		
 		CartList cartList = null;
 		
-		if(cart != null) { //장바구니가 있으면
+		if(pageNo != null){
+			int page = Integer.parseInt(pageNo);
+			cartList = readDB(cart);
+			cartList.setPageNum((cartList.getSize()+4)/5);
+			request.setAttribute("CART_LIST", cartList);
+			if(page > 1) {
+				page = (page - 1) * 5; //페이지를 빼서 몇 번부터 보여주는지
+				request.setAttribute("START", page);
+			}
+		}else if(cart != null) { //장바구니가 있으면
 			//장바구니에 있는 상품코드로 조회
 			//조회 결과를 빈에 담는다.		
 			cartList = readDB(cart);	 
-
+			cartList.setPageNum((cartList.getSize()+4)/5);
 			request.setAttribute("CART_LIST", cartList); 
-
-			
 		}else {	 //장바구니가 없으면
 			request.setAttribute("CART_LIST", null);
 		}

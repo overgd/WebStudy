@@ -25,32 +25,71 @@
 			<td width="100">구매금액</td>
 			<td width="80">수정/삭제</td>
 		</tr>
+		<c:choose>
+			<c:when test="${START != null }">
+				<c:forEach var="cnt" begin="${START }" end="${CART_LIST.size - 1 }">
+					<tr>
+						<td>${CART_LIST.code[cnt] }</td>
+						<td>${CART_LIST.name[cnt] }</td>
+						<td>${CART_LIST.price[cnt] }</td>
+						
+						<form action="modify_cart" method="post">
+						<input type="hidden" name="CODE" value="${CART_LIST.code[cnt]}"/>
+						
+						<td>
+						<input type="text" name="NUMBER" size="3" value="${CART_LIST.number[cnt] }"/>
+						</td>
+						
+						<td>${CART_LIST.price[cnt] * CART_LIST.number[cnt] }원</td>
+						
+						<td>
+						<input type="submit" name="BTNS" value="수정"/>
+						<input type="submit" name="BTNS" value="삭제"/>
+						</td>
+						</form>
 		
-		<c:forEach var="cnt" begin="0" end="${CART_LIST.size - 1 }">
-			<tr>
-				<td>${CART_LIST.code[cnt] }</td>
-				<td>${CART_LIST.name[cnt] }</td>
-				<td>${CART_LIST.price[cnt] }</td>
-				
-				<form action="modify_cart" method="post">
-				<input type="hidden" name="CODE" value="${CART_LIST.code[cnt]}"/>
-				
-				<td>
-				<input type="text" name="NUMBER" size="3" value="${CART_LIST.number[cnt] }"/>
-				</td>
-				
-				<td>${CART_LIST.price[cnt] * CART_LIST.number[cnt] }원</td>
-				
-				<td>
-				<input type="submit" name="BTNS" value="수정"/>
-				<input type="submit" name="BTNS" value="삭제"/>
-				</td>
-				</form>
-
-			</tr>	
-		</c:forEach>
-
+					</tr>	
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+				<c:choose>
+					<c:when test="${CART_LIST.size > 5 }">
+						<c:set var="loopcount" value="4"/>
+					</c:when>
+					<c:otherwise>
+						<c:set var="loopcount" value="${CART_LIST.size - 1 }"/>
+					</c:otherwise>
+				</c:choose>
+				<c:forEach var="cnt" begin="0" end="${loopcount }">
+					<tr>
+						<td>${CART_LIST.code[cnt] }</td>
+						<td>${CART_LIST.name[cnt] }</td>
+						<td>${CART_LIST.price[cnt] }</td>
+						
+						<form action="modify_cart" method="post">
+						<input type="hidden" name="CODE" value="${CART_LIST.code[cnt]}"/>
+						
+						<td>
+						<input type="text" name="NUMBER" size="3" value="${CART_LIST.number[cnt] }"/>
+						</td>
+						
+						<td>${CART_LIST.price[cnt] * CART_LIST.number[cnt] }원</td>
+						
+						<td>
+						<input type="submit" name="BTNS" value="수정"/>
+						<input type="submit" name="BTNS" value="삭제"/>
+						</td>
+						</form>
+		
+					</tr>	
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
 	</table>
+	
+	<c:forEach var="cnt" begin="1" end="${CART_LIST.pageNum }">
+	<a href="cart_list?PAGE_NO=${cnt }">${cnt }</a>
+	</c:forEach>
 	
 	<form action="" method="post">
 	장바구니 총액 : ${CART_LIST.totalAmount }원

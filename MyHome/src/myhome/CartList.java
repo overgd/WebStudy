@@ -11,9 +11,7 @@ public class CartList {
 
 	private int pageNum;
 	private boolean firstPage = false;
-	private boolean lastPage = false;
-	
-	
+	private boolean lastPage = false;	
 	
 	public int getPageNum() {
 		return pageNum;
