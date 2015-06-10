@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="configurations.MyMapper">
+<cache/>
+	<select id="selectMemberByPK" parameterType="String" resultType="model.UserInfo">
+	select id, password from uinfo where id = #{id}
+	</select>
+	<select id="selectMaxSeqNo" resultType="Integer">
+	select max(seqno) max_seqno from bbs	
+	</select>
+	<insert id="insertBBSInfo" parameterType="model.BBSPost">
+	insert into bbs(seqNo, title, content, id)
+	values(#{seqno}, #{title}, #{content}, #{id})
+	</insert>
+	<select id="selectCount" resultType="Integer">
+	select count(*) as num from bbs
+	</select>
+	<select id="selectBBSinfo" resultType="model.BBSList">
+	select seqno, title, id from bbs order by seqno desc
+	</select>
+	<select id="selectBBSitem" parameterType="Integer" resultType="model.BBSItem">
+	select seqno, title, content, id from bbs where seqno = #{seqno}
+	</select>
+	<select id="">
+
+	</select>
+</mapper>
