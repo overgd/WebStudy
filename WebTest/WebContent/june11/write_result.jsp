@@ -7,6 +7,8 @@
 <title></title>
 </head>
 <body>
-<h2>결과</h2>
+<script type="text/javascript">
+alert("새로운 이미지를 등록했습니다.");
+</script>
 </body>
 </html>

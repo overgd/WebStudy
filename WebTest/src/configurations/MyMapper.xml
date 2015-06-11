@@ -27,8 +27,8 @@
 	</select>
 	<insert id="insertWritingInfo" parameterType="Writing">
 	insert into writing_info values(
-	#{writingid}, #{groupid}, #{orderno}, #{parentid}, #{registerdate}, #{writername},
-	#{email}, #{imagename}, #{password}, #{title})
+	#{writingid}, #{groupid}, #{orderno}, #{parentid}, #{registerdate},
+	#{writername}, #{email}, #{imagename}, #{password}, #{title})
 	</insert>
 	<insert id="insertWritingContent" parameterType="WritingContent">
 	insert into writing_content values(#{writingid}, #{content})

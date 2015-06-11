@@ -9,6 +9,7 @@ import model.BBSList;
 import model.BBSPost;
 import model.IdSequence;
 import model.UserInfo;
+import model.Writing;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -176,6 +177,40 @@ public class CrudProcess {
 		
 		try {
 			int result = sqlSession.update(namespace+".updateSequenceManager", idSequence);
+			if(result > 0) {
+				sqlSession.commit();
+			}else {
+				sqlSession.rollback();
+			}
+			return result;
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
+	public Integer insertWritingContent(Writing writing) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			int result = sqlSession.insert(namespace+".insertWritingContent", writing);
+			if(result > 0) {
+				sqlSession.commit();
+			}else {
+				sqlSession.rollback();
+			}
+			return result;
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
+	public Integer insertWritingInfo(Writing writingInfo) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			int result = sqlSession.insert(namespace+".insertWritingInfo", writingInfo);
 			if(result > 0) {
 				sqlSession.commit();
 			}else {

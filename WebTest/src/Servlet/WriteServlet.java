@@ -90,10 +90,15 @@ public class WriteServlet extends HttpServlet {
 		writing.setTitle(multiPart.getParameter("title"));
 		writing.setContent(multiPart.getParameter("content"));
 		
+		
 		try {
 			writing.setWritingid(SequenceManager.nextId("writing_info"));
 		}catch(Exception e) {}
-			//writing_info¿¡ »ğÀÔ. writing_content¿¡ »ğÀÔ
+		
+		//writing_info¿¡ »ğÀÔ. writing_content¿¡ »ğÀÔ
+		crud.insertWritingInfo(writing);
+		crud.insertWritingContent(writing);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("template.jsp?CONTENTPAGE=write_result.jsp");
 		rd.forward(request, response);
 		
