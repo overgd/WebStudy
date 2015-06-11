@@ -4,6 +4,9 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="model.UserInfo" alias="UserInfo"/>
+		<typeAlias type="model.IdSequence" alias="IdSequence" />
+		<typeAlias type="model.Writing" alias="Writing" />
+		<typeAlias type="model.WritingContent" alias="WritingContent" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">

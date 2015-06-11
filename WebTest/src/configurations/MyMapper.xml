@@ -22,7 +22,24 @@
 	<select id="selectBBSitem" parameterType="Integer" resultType="model.BBSItem">
 	select seqno, title, content, id from bbs where seqno = #{seqno}
 	</select>
-	<select id="">
-
+	<select id="selectLastId" parameterType="String" resultType="Integer">
+	select last_id from id_sequence where table_name = #{name}
+	</select>
+	<insert id="insertWritingInfo" parameterType="Writing">
+	insert into writing_info values(
+	#{writingid}, #{groupid}, #{orderno}, #{parentid}, #{registerdate}, #{writername},
+	#{email}, #{imagename}, #{password}, #{title})
+	</insert>
+	<insert id="insertWritingContent" parameterType="WritingContent">
+	insert into writing_content values(#{writingid}, #{content})
+	</insert>
+	<insert id="insertSequenceManager" parameterType="IdSequence">
+	insert into id_sequence values(#{name}, #{lastid})
+	</insert>
+	<update id="updateSequenceManager" parameterType="IdSequence">
+	update id_sequence set last_id=#{lastid} where table_name=#{name}
+	</update>
+	<select id="selectMaxGroupId" resultType="Integer">
+	select max(group_id) from writing_info
 	</select>
 </mapper>

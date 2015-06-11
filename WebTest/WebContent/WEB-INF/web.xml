@@ -155,43 +155,83 @@
     <url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>LoginServlet</servlet-name>
-  	<servlet-class>june10.LoginServlet</servlet-class>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>june10.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>LoginServlet</servlet-name>
-  	<url-pattern>/june10/login.do</url-pattern>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/june10/login.do</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>LogoutServlet1</servlet-name>
-  	<servlet-class>june10.LogoutServlet</servlet-class>
+    <servlet-name>LogoutServlet1</servlet-name>
+    <servlet-class>june10.LogoutServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>LogoutServlet1</servlet-name>
-  	<url-pattern>/june10/logout.do</url-pattern>
+    <servlet-name>LogoutServlet1</servlet-name>
+    <url-pattern>/june10/logout.do</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>BBSPostServlet</servlet-name>
-  	<servlet-class>june10.BBSPostServlet</servlet-class>
+    <servlet-name>BBSPostServlet</servlet-name>
+    <servlet-class>june10.BBSPostServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>BBSPostServlet</servlet-name>
-  	<url-pattern>/june10/bbs_post.do</url-pattern>
+    <servlet-name>BBSPostServlet</servlet-name>
+    <url-pattern>/june10/bbs_post.do</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>BBSReadServlet</servlet-name>
-  	<servlet-class>june10.BBSReadServlet</servlet-class>
+    <servlet-name>BBSReadServlet</servlet-name>
+    <servlet-class>june10.BBSReadServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>BBSReadServlet</servlet-name>
-  	<url-pattern>/june10/bbs_list</url-pattern>
+    <servlet-name>BBSReadServlet</servlet-name>
+    <url-pattern>/june10/bbs_list</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>BBSItemServlet</servlet-name>
-  	<servlet-class>june10.BBSItemServlet</servlet-class>
+    <servlet-name>BBSItemServlet</servlet-name>
+    <servlet-class>june10.BBSItemServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>BBSItemServlet</servlet-name>
-  	<url-pattern>/june10/bbs_Item</url-pattern>
+    <servlet-name>BBSItemServlet</servlet-name>
+    <url-pattern>/june10/bbs_Item</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FileUploadServlet</display-name>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <servlet-class>june11.FileUploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <url-pattern>/june11/upload</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ImageUploadServlet</display-name>
+    <servlet-name>ImageUploadServlet</servlet-name>
+    <servlet-class>june11.ImageUploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImageUploadServlet</servlet-name>
+    <url-pattern>/june11/uploadImage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>WriteFormServlet</display-name>
+    <servlet-name>WriteFormServlet</servlet-name>
+    <servlet-class>Servlet.WriteFormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WriteFormServlet</servlet-name>
+    <url-pattern>/june11/writeForm</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>WriteServlet</display-name>
+    <servlet-name>WriteServlet</servlet-name>
+    <servlet-class>Servlet.WriteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WriteServlet</servlet-name>
+    <url-pattern>/june11/write.do</url-pattern>
   </servlet-mapping>
 </web-app>

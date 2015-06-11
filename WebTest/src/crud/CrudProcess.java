@@ -7,6 +7,7 @@ import java.util.List;
 import model.BBSItem;
 import model.BBSList;
 import model.BBSPost;
+import model.IdSequence;
 import model.UserInfo;
 
 import org.apache.ibatis.io.Resources;
@@ -115,4 +116,75 @@ public class CrudProcess {
 		}
 		
 	}
+	
+	public Integer selectMaxGroupId() {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+
+		try {
+			Object result = sqlSession.selectOne(namespace+".selectMaxGroupId");
+			if(result == null) {
+				return 0;
+			}else {
+				return Integer.parseInt(String.valueOf(result));
+			}
+		}finally {
+			sqlSession.close();
+		}
+		
+	}
+	
+	public Integer insertIdSequence(IdSequence idSequence) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			int result = sqlSession.insert(namespace+".insertSequenceManager");
+			if(result > 0) {
+				sqlSession.commit();
+			}else {
+				sqlSession.rollback();
+			}
+			
+			return result;	
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
+	public Integer selectLastId(String name) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			Object result = sqlSession.selectOne(namespace+".selectLastId", name);
+			
+			if(result == null) {
+				return 0;
+			}else {
+				return Integer.parseInt(String.valueOf(result));
+			}
+			
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
+	public Integer updateSequenceManager(IdSequence idSequence) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			int result = sqlSession.update(namespace+".updateSequenceManager", idSequence);
+			if(result > 0) {
+				sqlSession.commit();
+			}else {
+				sqlSession.rollback();
+			}
+			return result;
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
 }
