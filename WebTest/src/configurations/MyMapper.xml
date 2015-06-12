@@ -42,4 +42,34 @@
 	<select id="selectMaxGroupId" resultType="Integer">
 	select max(group_id) from writing_info
 	</select>
+	<select id="selectBBSList" resultType="Writing">
+	select <include refid="BaseColumns"/> from writing_info order by group_id desc
+	</select>
+	<sql id="BaseColumns">
+	WRITING_ID as writingid, GROUP_ID as groupid, ORDER_NO as orderno, PARENT_ID as parentid, REGISTER_DATE as registerdate,
+	WRITER_NAME as writername, EMAIL as email, IMAGE_NAME as imagename, PASSWORD as password, TITLE as title
+	</sql>
+	<select id="selectWritingInfo" parameterType="Integer" resultType="Writing">
+	select <include refid="BaseColumns"/> from writing_info
+	where writing_id = #{writingid}
+	</select>
+	<select id="selectWritingContent" parameterType="Integer" resultType="String">
+	select content from writing_content where writing_id = #{writingid}
+	</select>
+	<delete id="deleteWritingInfo" parameterType="Integer">
+	delete writing_info where writing_id = #{writingid}
+	</delete>
+	<delete id="deleteWritingContent" parameterType="Integer">
+	delete writing_content where writing_id = #{writingid}
+	</delete>
+	<update id="updateWritingInfo" parameterType="Writing">
+	update writing_info set WRITER_NAME = #{writername}, EMAIL = #{email}, TITLE = #{title}, IMAGE_NAME = #{imagename} where writing_id = #{writingid}
+	</update>
+	<update id="updateWritingContent" parameterType="Writing">
+	update writing_content set CONTENT = #{content} where writing_id = #{writingid}
+	</update>
+	<select id="selectMaxOrderIdReply" parameterType="Writing" resultType="Integer">
+	select max(order_no) from writing_info
+	where group_id = #{groupid} and parent_id = #{parentid}
+	</select>
 </mapper>

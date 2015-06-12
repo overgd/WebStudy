@@ -16,9 +16,6 @@ function validate(form) {
 	}else if(form.writername.value == "") {
 		alert("작성자를 입력하세요!");
 		return false;
-	}else if(form.imagename.value == "") {
-		alert("이미지를 선택하세요!");
-		return false;
 	}else if(form.content.value == "") {
 		alert("내용을 입력하세요!");
 		return false;
@@ -28,28 +25,23 @@ function validate(form) {
 	}
 }
 </script>
-<form action="write.do" method="post" enctype="multipart/form-data" onsubmit="return validate(this)">
-<input type="hidden" name="orderno" value="${writing.orderno + 1 }"/>
-<c:if test="${! empty writing.groupid }">
-<input type="hidden" name="groupid" value="${writing.groupid }"/>
-</c:if>
-<c:if test="${! empty writing.parentid }">
-<input type="hidden" name="parentid" value="${writing.parentid }"/>
-</c:if>
+<c:if test="${!empty writing }">
+<form action="update.do" method="post" enctype="multipart/form-data" onsubmit="return validate(this)">
+<input type="hidden" name="id" value="${writing.writingid }"/>
 <table width="100%" border="1" cellpadding="1">
 <tr>
-	<td>제목</td>
-	<td><input type="text" name="title" size="40" value="${title }"/>
+	<td>글제목</td>
+	<td><input type="text" name="title" size="40" value="${writing.title }"/>
 	</td>
 </tr>
 <tr>
 	<td>작성자</td>
-	<td><input type="text" name="writername" size="10"/>
+	<td><input type="text" name="writername" size="10" value="${writing.writername }"/>
 	</td>
 </tr>
 <tr>
 	<td>이메일</td>
-	<td><input type="text" name="email" size="10"/>
+	<td><input type="text" name="email" size="10" value="${writing.email }"/>
 	</td>
 </tr>
 <tr>
@@ -59,18 +51,23 @@ function validate(form) {
 </tr>
 <tr>
 	<td>이미지</td>
-	<td><input type="file" name="imagename" size="20"/>
+	<td><img alt="그림" src="../upload_files/thumb.${writing.imagename }" border="0">
+	<input type="file" name="imagename" size="20" value="${writing.imagename }"/>
 	</td>
 </tr>
 <tr>
 	<td>글내용</td>
-	<td><textarea name="content" rows="8" cols="40"></textarea>
+	<td><textarea name="content" rows="8" cols="40">${writing.content }</textarea>
 	</td>
 </tr>
 <tr>
-	<td colspan="2"><input type="submit" value="글 올리기"/></td>
+	<td colspan="2">
+		<input type="submit" value="수정"/>
+		<input type="button" value="취소" onclick="javascript:history.go(-1)"/>
+	</td>
 </tr>
 </table>
 </form>
+</c:if>
 </body>
 </html>

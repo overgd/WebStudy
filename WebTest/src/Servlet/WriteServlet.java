@@ -68,6 +68,18 @@ public class WriteServlet extends HttpServlet {
 			writing.setGroupid(maxGroup);
 		}else { //답글인 경우
 			
+			writing.setParentid(Integer.parseInt(parentId));
+			writing.setGroupid(Integer.parseInt(groupId));
+			
+			int ordering = crud.selectMaxOrderIdReply(writing);
+			
+			if(ordering > 0) {
+				ordering = ordering + 1;
+				writing.setOrderno(ordering);
+			}else if(ordering == 0) {
+				writing.setOrderno(++ordering);
+			}
+			
 		}
 		
 		String uploadPath = getServletContext().getRealPath("upload_files");
@@ -92,7 +104,7 @@ public class WriteServlet extends HttpServlet {
 		
 		
 		try {
-			writing.setWritingid(SequenceManager.nextId("writing_info"));
+			writing.setWritingid(SequenceManager.nextId("writing_info")); //글 번호
 		}catch(Exception e) {}
 		
 		//writing_info에 삽입. writing_content에 삽입

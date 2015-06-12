@@ -140,7 +140,7 @@ public class CrudProcess {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		
 		try {
-			int result = sqlSession.insert(namespace+".insertSequenceManager");
+			int result = sqlSession.insert(namespace+".insertSequenceManager",idSequence);
 			if(result > 0) {
 				sqlSession.commit();
 			}else {
@@ -220,6 +220,160 @@ public class CrudProcess {
 		}finally {
 			sqlSession.close();
 		}
+	}
+	
+	public List<Writing> selectBBSList() {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			
+			return sqlSession.selectList(namespace+".selectBBSList");
+		
+		}finally {
+			sqlSession.close();
+		}
+		
+	}
+	
+	public List<Writing> selectWritingInfo(int writingid) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			return sqlSession.selectList(namespace+".selectWritingInfo", writingid);
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
+	public Writing selectOneWritingInfo(int writingid) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			return sqlSession.selectOne(namespace+".selectWritingInfo", writingid);
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
+	public String selectWritingContent(int writingid) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			return sqlSession.selectOne(namespace+".selectWritingContent", writingid);
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
+	public Integer deleteWritingInfo(int writingid) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			int result = sqlSession.delete(namespace+".deleteWritingInfo", writingid);
+			
+			if(result > 0) {
+				sqlSession.commit();
+			}else {
+				sqlSession.rollback();
+			}
+			return result;
+			
+		}finally {
+			sqlSession.close();
+		}
+		
+	}
+	
+	public Integer deleteWritingContent(int writingid) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			int result = sqlSession.delete(namespace+".deleteWritingContent", writingid);
+		
+			if(result > 0) {
+				sqlSession.commit();
+			}else {
+				sqlSession.rollback();
+			}
+			return result;
+		
+		}finally {
+			sqlSession.close();
+		}
+		
+	}
+	
+	public Integer updateWritingInfo(Writing writing) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			
+			String statement = namespace+".updateWritingInfo";
+			
+			int result = sqlSession.update(statement, writing);
+		
+			if(result > 0) {
+				sqlSession.commit();
+			}else {
+				sqlSession.rollback();
+			}
+			return result;
+		
+		}finally {
+			sqlSession.close();
+		}
+		
+	}
+	
+	public Integer updateWritingContent(Writing writing) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			
+			String statement = namespace+".updateWritingContent";
+			
+			int result = sqlSession.update(statement, writing);
+		
+			if(result > 0) {
+				sqlSession.commit();
+			}else {
+				sqlSession.rollback();
+			}
+			return result;
+		
+		}finally {
+			sqlSession.close();
+		}
+		
+	}
+	
+	public Integer selectMaxOrderIdReply(Writing writing) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			String statement = namespace + ".selectMaxOrderIdReply";
+			
+			Object result = sqlSession.selectOne(statement, writing);
+			
+			if(result == null) {
+				return 0;
+			}else {
+				return Integer.parseInt(String.valueOf(result));
+			}
+		
+		}finally {
+			sqlSession.close();
+		}
+		
 	}
 	
 }
