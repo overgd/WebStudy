@@ -53,7 +53,7 @@ public class WriteServlet extends HttpServlet {
 		
 		String fileName = multiPart.getFileName("imagename");
 		String parentId = multiPart.getParameter("parentid");
-		String groupId = multiPart.getParameter("groupid");
+		String groupId = multiPart.getParameter("groupid"); System.out.println("groupid:["+groupId+"]");
 		String orderNo = multiPart.getParameter("orderno");
 		CrudProcess crud = new CrudProcess();
 		
@@ -61,24 +61,34 @@ public class WriteServlet extends HttpServlet {
 			//원글
 			writing.setParentid(0);
 			writing.setOrderno(0);
-
 			int maxGroup = crud.selectMaxGroupId();//그룹아이디 검색
 			maxGroup++;
-			
 			writing.setGroupid(maxGroup);
 		}else { //답글인 경우
-			
 			writing.setParentid(Integer.parseInt(parentId));
 			writing.setGroupid(Integer.parseInt(groupId));
-			
-			int ordering = crud.selectMaxOrderIdReply(writing);
-			
+			writing.setOrderno(Integer.parseInt(orderNo));
+			int ordering = crud.selectMaxGroupIdReply(writing);
 			if(ordering > 0) {
-				ordering = ordering + 1;
-				writing.setOrderno(ordering);
-			}else if(ordering == 0) {
-				writing.setOrderno(++ordering);
+				if(ordering > 1) {
+					ordering = ordering + 1;
+					writing.setOrderno(ordering);
+					crud.updateOrderNo(writing);
+				}else {
+					int order_no = crud.selectMaxOrderNo(writing);
+					order_no = order_no + 1;
+					writing.setOrderno(order_no);
+					crud.updateOrderNo(writing);
+				}
 			}
+//			else if(ordering == 0) {
+//				writing.setOrderno(++ordering);
+//			}
+			else {
+				//기존의 출력 순서를 1증가
+				crud.updateOrderNo(writing);
+			}
+
 			
 		}
 		

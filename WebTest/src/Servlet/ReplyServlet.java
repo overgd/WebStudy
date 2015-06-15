@@ -38,7 +38,7 @@ public class ReplyServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String parentId = request.getParameter("parentid");
-		String groupId = request.getParameter("groupid");
+		String groupId = request.getParameter("groupid"); System.out.println("1.groupid in replyservlet:["+groupId+"]");
 
 		String title = "";
 		Writing writing = null;
@@ -51,8 +51,8 @@ public class ReplyServlet extends HttpServlet {
 				title = "RE] "+writing.getTitle();//원글의 제목을 불러옴.
 			}
 			writing.setParentid(Integer.parseInt(parentId));
-			writing.setGroupid(Integer.parseInt(parentId));
-			
+			writing.setGroupid(Integer.parseInt(groupId));
+			System.out.println("2.groupid in replyservlet:["+groupId+"]");
 		}	
 		
 		request.setAttribute("writing", writing);

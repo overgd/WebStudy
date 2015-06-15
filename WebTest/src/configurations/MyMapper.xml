@@ -43,7 +43,7 @@
 	select max(group_id) from writing_info
 	</select>
 	<select id="selectBBSList" resultType="Writing">
-	select <include refid="BaseColumns"/> from writing_info order by group_id desc
+	select <include refid="BaseColumns"/> from writing_info order by group_id desc, order_no asc
 	</select>
 	<sql id="BaseColumns">
 	WRITING_ID as writingid, GROUP_ID as groupid, ORDER_NO as orderno, PARENT_ID as parentid, REGISTER_DATE as registerdate,
@@ -68,8 +68,25 @@
 	<update id="updateWritingContent" parameterType="Writing">
 	update writing_content set CONTENT = #{content} where writing_id = #{writingid}
 	</update>
-	<select id="selectMaxOrderIdReply" parameterType="Writing" resultType="Integer">
+	<select id="selectMaxGroupIdReply" parameterType="Writing" resultType="Integer">
 	select max(order_no) from writing_info
 	where group_id = #{groupid} and parent_id = #{parentid}
+	</select>
+	<select id="selectPageCount" resultType="Integer">
+	select count(*) from writing_info
+	</select>
+	<select id="selectWritingInfoWithRange" parameterType="Condition" resultType="Writing">
+	select <include refid="BaseColumns"/> from
+	(select a.*, rownum rn from
+	(select * from writing_info order by group_id desc, order_no asc) a)
+	where rn between #{startRow} and #{endRow}
+	</select>
+	<update id="updateOrderNo" parameterType="Writing">
+	update writing_info set order_no = order_no + 1
+	where group_id = #{groupid} and order_no >= #{orderno}
+	</update>
+	<select id="selectMaxOrderNo" parameterType="Writing" resultType="Integer">
+	select max(order_no) from writing_info
+	where group_id = #{groupid}
 	</select>
 </mapper>

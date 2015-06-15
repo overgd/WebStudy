@@ -36,6 +36,7 @@ function validate(form) {
 <c:if test="${! empty writing.parentid }">
 <input type="hidden" name="parentid" value="${writing.parentid }"/>
 </c:if>
+groupid:${writing.groupid }
 <table width="100%" border="1" cellpadding="1">
 <tr>
 	<td>Á¦¸ñ</td>

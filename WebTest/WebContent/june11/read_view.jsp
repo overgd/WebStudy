@@ -37,6 +37,7 @@
 	</td>
 </tr>
 </table>
+writing.groupid:${writing.groupid },parentid:${writing.writingid }
 </c:if>
 <script type="text/javascript">
 function goDelete(){

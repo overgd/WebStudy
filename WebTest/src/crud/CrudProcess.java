@@ -7,6 +7,7 @@ import java.util.List;
 import model.BBSItem;
 import model.BBSList;
 import model.BBSPost;
+import model.Condition;
 import model.IdSequence;
 import model.UserInfo;
 import model.Writing;
@@ -355,12 +356,12 @@ public class CrudProcess {
 		
 	}
 	
-	public Integer selectMaxOrderIdReply(Writing writing) {
+	public Integer selectMaxGroupIdReply(Writing writing) {
 		
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		
 		try {
-			String statement = namespace + ".selectMaxOrderIdReply";
+			String statement = namespace + ".selectMaxGroupIdReply";
 			
 			Object result = sqlSession.selectOne(statement, writing);
 			
@@ -370,6 +371,81 @@ public class CrudProcess {
 				return Integer.parseInt(String.valueOf(result));
 			}
 		
+		}finally {
+			sqlSession.close();
+		}
+		
+	}
+	
+	public Integer selectPageCount() {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+
+			String statement = namespace + ".selectPageCount";
+			
+			Object result = sqlSession.selectOne(statement);
+			
+			return Integer.parseInt(String.valueOf(result));
+		
+		}finally {
+			sqlSession.close();
+		}
+	}
+	
+	public List<Writing> selectWritingInfoWithRange(Condition condition) {
+
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+
+			String statement = namespace + ".selectWritingInfoWithRange";
+			
+			return sqlSession.selectList(statement, condition);
+		
+		}finally {
+			sqlSession.close();
+		}
+		
+	}
+	
+	public Integer updateOrderNo(Writing writing) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+
+			String statement = namespace + ".updateOrderNo";
+			
+			int result = sqlSession.update(statement, writing);
+			
+			if(result > 0) {
+				sqlSession.commit();
+			}else {
+				sqlSession.rollback();
+			}
+			return result;
+		
+		}finally {
+			sqlSession.close();
+		}
+		
+	}
+	
+	public Integer selectMaxOrderNo(Writing writing) {
+		
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		try {
+			String statement = namespace + ".selectMaxOrderNo";
+			Object result = sqlSession.selectOne(statement, writing);
+			if(result == null) {
+				return 0;
+			}
+			else{
+				return Integer.parseInt(String.valueOf(result)); 
+			}
 		}finally {
 			sqlSession.close();
 		}
